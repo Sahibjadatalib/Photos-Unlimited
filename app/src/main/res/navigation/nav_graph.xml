@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/viewPagerFragment">
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.example.wallpaperapp.ui.ViewPagerFragment"
+        android:label="ViewPagerFragment"
+        tools:layout="@layout/fragment_view_pager"/>
+</navigation>
