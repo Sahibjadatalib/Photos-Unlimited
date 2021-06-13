@@ -17,5 +17,12 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository:PexelRepository) : ViewModel(){
 
+    private val _navigateToDetail = MutableLiveData<Boolean>()
+    val navigateToDetail: LiveData<Boolean> get() = _navigateToDetail
+
     val photos = repository.getPexelPhotos().cachedIn(viewModelScope)
+
+    fun navigateToDetail(){
+
+    }
 }

@@ -9,8 +9,8 @@ import com.example.wallpaperapp.models.Photos
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-//@HiltViewModel
-//class DetailViewViewModel @Inject constructor(val selectedPhoto:Photos,app:Application) : AndroidViewModel(app) {
-//
-//
-//}
+@HiltViewModel
+class DetailViewViewModel @Inject constructor() : ViewModel() {
+
+
+}

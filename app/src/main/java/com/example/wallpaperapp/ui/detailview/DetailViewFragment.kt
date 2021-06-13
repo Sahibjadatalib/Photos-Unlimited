@@ -11,23 +11,24 @@ import com.example.wallpaperapp.R
 import com.example.wallpaperapp.databinding.DetailViewFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-//@AndroidEntryPoint
-//class DetailViewFragment : Fragment() {
-//
-//    companion object {
-//        fun newInstance() = DetailViewFragment()
-//    }
-//
-//    private val viewModel by viewModels<DetailViewViewModel>()
-//
-//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-//                              savedInstanceState: Bundle?): View? {
-//
-//        val binding = DetailViewFragmentBinding.inflate(inflater)
-//
-//        binding.viewModel = viewModel
-//        binding.lifecycleOwner = this
-//
-//        return binding.root
-//    }
-//}
+@AndroidEntryPoint
+class DetailViewFragment : Fragment() {
+
+    companion object {
+        fun newInstance() = DetailViewFragment()
+    }
+
+    private val viewModel by viewModels<DetailViewViewModel>()
+    private lateinit var binding: DetailViewFragmentBinding
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+
+        binding = DetailViewFragmentBinding.inflate(inflater)
+        binding.lifecycleOwner = viewLifecycleOwner
+
+
+
+        return binding.root
+    }
+}

@@ -10,7 +10,7 @@ import javax.inject.Singleton
 class PexelRepository @Inject constructor(private val pexelApi: PexelApi) {
 
     fun getPexelPhotos() =
-        Pager(config = PagingConfig(pageSize = 15,maxSize = 80,enablePlaceholders = false),
+        Pager(config = PagingConfig(pageSize = 80,maxSize = 260,enablePlaceholders = false),
               pagingSourceFactory = {PexelPagingSource(pexelApi)}
              ).liveData
 }

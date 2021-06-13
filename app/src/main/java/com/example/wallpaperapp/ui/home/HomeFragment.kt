@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.example.wallpaperapp.R
 import com.example.wallpaperapp.databinding.FragmentHomeBinding
+import com.example.wallpaperapp.databinding.PexelPhotoLoadStateFooterHeaderBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.photos_list_item.view.*
 
@@ -39,12 +40,17 @@ class HomeFragment : Fragment(){
         val adapter = PexelPhotoAdapter()
 
         binding.apply {
-            recyclerview.adapter = adapter
+            recyclerview.adapter = adapter.withLoadStateHeaderAndFooter(
+                header = PexelPhotoLoadStateAdapter { adapter.retry() },
+                footer = PexelPhotoLoadStateAdapter { adapter.retry() }
+            )
         }
 
         viewModel.photos.observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
+
+
 
         return binding.root
     }
