@@ -7,10 +7,9 @@
 
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         tools:context=".ui.search_results.SearchResultFragment">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -26,5 +25,46 @@
             app:spanCount="1"
             tools:listitem="@layout/photos_list_item" />
 
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            tools:visibility="visible"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/text_view_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Results coult not be loaded!"
+            android:textSize="24dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            />
+
+
+        <TextView
+            android:id="@+id/text_view_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No results for this query!"
+            android:layout_centerInParent="true"
+            android:textSize="24dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            />
+
+        <Button
+            android:id="@+id/retry_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retry"
+            android:layout_below="@id/text_view_error"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </RelativeLayout>
 </layout>

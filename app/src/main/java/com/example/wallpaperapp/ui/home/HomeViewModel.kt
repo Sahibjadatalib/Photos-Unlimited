@@ -14,27 +14,6 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository:PexelRepository) : ViewModel(){
 
-//    private val _navigateToDetail = MutableLiveData<Boolean>()
-//    val navigateToDetail: LiveData<Boolean> get() = _navigateToDetail
-//
-//    private val currentQuery = MutableLiveData<String>()
-//
-//
-//
-//
-
     var photos = repository.getPexelPhotos().cachedIn(viewModelScope)
 
-
-//    fun searchPhotos(query:String){
-//
-//        currentQuery.value = query
-//        photos = currentQuery.switchMap {queryString->
-//            repository.getSearchedPhotos("Ocean").cachedIn(viewModelScope)
-//        }
-//    }
-
-//    fun navigateToDetail(){
-//
-//    }
 }

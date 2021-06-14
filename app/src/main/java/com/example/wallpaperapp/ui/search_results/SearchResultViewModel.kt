@@ -1,5 +1,6 @@
 package com.example.wallpaperapp.ui.search_results
 
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
@@ -7,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.example.wallpaperapp.network.PexelRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,6 +26,6 @@ class SearchResultViewModel @Inject constructor(private val repository:PexelRepo
     }
 
     companion object {
-        private const val DEFAULT_QUERY = "cats"
+        private const val DEFAULT_QUERY = "ocean"
     }
 }
