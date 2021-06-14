@@ -2,10 +2,18 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/viewPagerFragment">
+    app:startDestination="@id/homeFragment">
     <fragment
-        android:id="@+id/viewPagerFragment"
-        android:name="com.example.wallpaperapp.ui.ViewPagerFragment"
-        android:label="ViewPagerFragment"
-        tools:layout="@layout/fragment_view_pager"/>
+        android:id="@+id/homeFragment"
+        android:name="com.example.wallpaperapp.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.example.wallpaperapp.ui.search_results.SearchResultFragment"
+        android:label="SearchResultFragment" />
 </navigation>

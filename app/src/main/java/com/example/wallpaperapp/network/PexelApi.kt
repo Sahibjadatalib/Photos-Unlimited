@@ -26,5 +26,11 @@ interface PexelApi{
         @Query("per_page") per_page:Int
     ) : PexelCurated
 
+    @GET("search")
+    suspend fun getSearchedPhotos(
+        @Query("query") query:String,
+        @Query("page") page:Int,
+        @Query("per_page") per_page:Int,
+    ) : PexelCurated
 
 }

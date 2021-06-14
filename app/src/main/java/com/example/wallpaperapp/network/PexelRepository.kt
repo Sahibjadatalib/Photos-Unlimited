@@ -7,10 +7,19 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PexelRepository @Inject constructor(private val pexelApi: PexelApi) {
+class PexelRepository @Inject constructor(
+    private val pexelApi: PexelApi
+) {
 
     fun getPexelPhotos() =
-        Pager(config = PagingConfig(pageSize = 80,maxSize = 260,enablePlaceholders = false),
-              pagingSourceFactory = {PexelPagingSource(pexelApi)}
-             ).liveData
+        Pager(
+            config = PagingConfig(pageSize = 80, maxSize = 260, enablePlaceholders = false),
+            pagingSourceFactory = { PexelPagingSource(pexelApi) }
+        ).liveData
+
+    fun getSearchedPhotos(query: String) =
+        Pager(
+            config = PagingConfig(pageSize = 15, maxSize = 80, enablePlaceholders = false),
+            pagingSourceFactory = { PexelPagingSourceForSearch(pexelApi, query) }
+        ).liveData
 }

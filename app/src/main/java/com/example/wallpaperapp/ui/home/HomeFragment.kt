@@ -1,9 +1,11 @@
 package com.example.wallpaperapp.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -14,28 +16,30 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.example.wallpaperapp.R
 import com.example.wallpaperapp.databinding.FragmentHomeBinding
-import com.example.wallpaperapp.databinding.PexelPhotoLoadStateFooterHeaderBinding
+import com.example.wallpaperapp.ui.search_results.SearchResultViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.photos_list_item.view.*
+import java.util.*
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(){
-    
-    companion object{
+class HomeFragment : Fragment() {
+
+    companion object {
         fun newInstance() = HomeFragment()
     }
 
     private val viewModel by viewModels<HomeViewModel>()
-    private lateinit var binding : FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
+        savedInstanceState: Bundle?
+    ): View {
 
         binding = FragmentHomeBinding.inflate(inflater)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         val adapter = PexelPhotoAdapter()
 
@@ -51,14 +55,48 @@ class HomeFragment : Fragment(){
         }
 
 
-
+        setHasOptionsMenu(true)
         return binding.root
     }
 
-//    override fun onClickSlectedItem(view: View, selectedPhoto: Photos) {
-//        when(view.id){
-//            R.id.image_view -> viewModel.navigateToDetailView(selectedPhoto)
-//            else -> Toast.makeText(context,"No view clicked",Toast.LENGTH_SHORT).show()
-//        }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_home, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.action_search -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchResultFragment())
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//
+//        inflater.inflate(R.menu.menu_home,menu)
+//
+//        val searchItem = menu.findItem(R.id.action_search)
+//        val searchView = searchItem.actionView as SearchView
+//
+//        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                if(query!=null){
+//                    binding.recyclerview.scrollToPosition(0)
+//                    viewModel.searchPhotos(query.lowercase(Locale.getDefault()))
+//
+//                    Toast.makeText(context,query,Toast.LENGTH_SHORT).show()
+//                    searchView.clearFocus()
+//
+//                }
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                return true
+//            }
+//
+//        })
 //    }
 }

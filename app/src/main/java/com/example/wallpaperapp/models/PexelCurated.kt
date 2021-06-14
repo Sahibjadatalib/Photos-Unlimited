@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class PexelCurated(
+        val total_results:Int,
         val page:Int,
         val per_page:Int,
         val photos:List<Photos>,

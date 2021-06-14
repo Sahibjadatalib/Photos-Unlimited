@@ -1,9 +1,6 @@
 package com.example.wallpaperapp.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.cachedIn
 import com.example.wallpaperapp.models.PexelCurated
 import com.example.wallpaperapp.models.Photos
@@ -17,12 +14,27 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository:PexelRepository) : ViewModel(){
 
-    private val _navigateToDetail = MutableLiveData<Boolean>()
-    val navigateToDetail: LiveData<Boolean> get() = _navigateToDetail
+//    private val _navigateToDetail = MutableLiveData<Boolean>()
+//    val navigateToDetail: LiveData<Boolean> get() = _navigateToDetail
+//
+//    private val currentQuery = MutableLiveData<String>()
+//
+//
+//
+//
 
-    val photos = repository.getPexelPhotos().cachedIn(viewModelScope)
+    var photos = repository.getPexelPhotos().cachedIn(viewModelScope)
 
-    fun navigateToDetail(){
 
-    }
+//    fun searchPhotos(query:String){
+//
+//        currentQuery.value = query
+//        photos = currentQuery.switchMap {queryString->
+//            repository.getSearchedPhotos("Ocean").cachedIn(viewModelScope)
+//        }
+//    }
+
+//    fun navigateToDetail(){
+//
+//    }
 }

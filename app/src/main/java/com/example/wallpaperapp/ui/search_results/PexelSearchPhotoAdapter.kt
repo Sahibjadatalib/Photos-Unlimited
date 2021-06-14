@@ -1,4 +1,4 @@
-package com.example.wallpaperapp.ui.home
+package com.example.wallpaperapp.ui.search_results
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,8 +12,8 @@ import com.example.wallpaperapp.R
 import com.example.wallpaperapp.databinding.PhotosListItemBinding
 import com.example.wallpaperapp.models.Photos
 
-class PexelPhotoAdapter :
-    PagingDataAdapter<Photos, PexelPhotoAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
+class PexelSearchPhotoAdapter() :
+    PagingDataAdapter<Photos, PexelSearchPhotoAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
         val binding =
