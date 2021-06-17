@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.example.wallpaperapp.ui.detailview.DetailViewViewModel" />
 
 
     </data>
@@ -16,7 +20,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:src="@tools:sample/backgrounds/scenic"
-            tools:scaleType="centerCrop"/>
+            tools:scaleType="centerCrop"
+            imageUrl="@{viewModel.selectedPhoto.src.large2x}"/>
+
+        <TextView
+            android:id="@+id/text_view_photographer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Name of the photograpger"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="8dp"
+            android:textSize="24dp"
+            android:text="@{String.valueOf(viewModel.selectedPhotoId)}"/>
 
 
     </FrameLayout>

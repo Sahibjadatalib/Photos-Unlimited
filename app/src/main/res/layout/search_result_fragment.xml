@@ -5,6 +5,7 @@
 
     <data>
 
+
     </data>
 
     <RelativeLayout
@@ -54,7 +55,7 @@
             android:textSize="24dp"
             android:visibility="gone"
             tools:visibility="visible"
-            />
+            imageUrl=""/>
 
         <Button
             android:id="@+id/retry_button"

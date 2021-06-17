@@ -6,14 +6,32 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.wallpaperapp.ui.home.HomeFragment"
-        android:label="HomeFragment"
+        android:label="Photos Gallery"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_searchResultFragment"
             app:destination="@id/searchResultFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailViewFragment"
+            app:destination="@id/detailViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchResultFragment"
         android:name="com.example.wallpaperapp.ui.search_results.SearchResultFragment"
-        android:label="SearchResultFragment" />
+        android:label="SearchResultFragment"
+        tools:layout="@layout/search_result_fragment">
+        <argument
+            android:name="query"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailViewFragment"
+        android:name="com.example.wallpaperapp.ui.detailview.DetailViewFragment"
+        android:label="DetailViewFragment"
+        tools:layout="@layout/detail_view_fragment">
+        <argument
+            android:name="selectedPhoto"
+            app:argType="com.example.wallpaperapp.models.Photos" />
+    </fragment>
 </navigation>

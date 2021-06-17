@@ -12,7 +12,7 @@ import com.example.wallpaperapp.R
 import com.example.wallpaperapp.databinding.PhotosListItemBinding
 import com.example.wallpaperapp.models.Photos
 
-class PexelSearchPhotoAdapter() :
+class PexelSearchPhotoAdapter :
     PagingDataAdapter<Photos, PexelSearchPhotoAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
@@ -34,19 +34,8 @@ class PexelSearchPhotoAdapter() :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(currentPhoto: Photos) {
-
-            binding.apply {
-                Glide.with(itemView)
-                    .load(currentPhoto.src.large2x)
-                    .centerCrop()
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .apply(
-                        RequestOptions().placeholder(R.drawable.loading_animation)
-                            .error(R.drawable.ic_baseline_broken_image_24)
-                    )
-                    .error(R.drawable.ic_baseline_broken_image_24)
-                    .into(imageView)
-            }
+            binding.photo = currentPhoto
+            binding.executePendingBindings()
         }
 
     }

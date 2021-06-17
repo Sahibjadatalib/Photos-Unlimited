@@ -1,6 +1,9 @@
 package com.example.wallpaperapp.di
 
 import android.os.Build
+import androidx.core.os.bundleOf
+import androidx.navigation.NavArgs
+import com.example.wallpaperapp.models.Photos
 import com.example.wallpaperapp.network.PexelApi
 import com.google.gson.Gson
 import com.squareup.moshi.Moshi
@@ -62,5 +65,7 @@ object PexelApiModule {
     @Singleton
     fun providePexelApi(retrofit: Retrofit):PexelApi =
         retrofit.create(PexelApi::class.java)
+
+
 
 }

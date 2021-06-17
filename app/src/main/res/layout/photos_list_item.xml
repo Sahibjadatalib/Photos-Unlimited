@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="photo"
+            type="com.example.wallpaperapp.models.Photos" />
 
     </data>
 
@@ -30,7 +33,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/ic_launcher_foreground"/>
+                app:srcCompat="@drawable/ic_launcher_foreground"
+                android:scaleType="centerCrop"
+                imageUrl="@{photo.src.large2x}"/>
         </com.google.android.material.card.MaterialCardView>
 
 

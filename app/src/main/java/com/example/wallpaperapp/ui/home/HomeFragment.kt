@@ -18,18 +18,20 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.example.wallpaperapp.R
 import com.example.wallpaperapp.databinding.FragmentHomeBinding
+import com.example.wallpaperapp.models.Photos
 import com.example.wallpaperapp.ui.search_results.SearchResultViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), PexelPhotoAdapter.OnClickListener {
 
     companion object {
         fun newInstance() = HomeFragment()
     }
 
     private val viewModel by viewModels<HomeViewModel>()
+    private val searchViewModel by viewModels<SearchResultViewModel>()
     private lateinit var binding: FragmentHomeBinding
 
 
@@ -43,7 +45,7 @@ class HomeFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        val adapter = PexelPhotoAdapter()
+        val adapter = PexelPhotoAdapter(this)
 
         binding.apply {
             recyclerview.adapter = adapter.withLoadStateHeaderAndFooter(
@@ -80,43 +82,35 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_home, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.menu_search, menu)
+
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    binding.recyclerview.scrollToPosition(0)
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchResultFragment(query))
+                    Toast.makeText(context, query, Toast.LENGTH_SHORT).show()
+                    searchView.clearFocus()
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+
+        })
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when (item.itemId) {
-            R.id.action_search -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchResultFragment())
-        }
-
-        return super.onOptionsItemSelected(item)
+    override fun onPhotoClick(photo: Photos) {
+        Toast.makeText(context,"${photo.id}",Toast.LENGTH_SHORT).show()
+        this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailViewFragment(photo))
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        super.onCreateOptionsMenu(menu, inflater)
-//
-//        inflater.inflate(R.menu.menu_home,menu)
-//
-//        val searchItem = menu.findItem(R.id.action_search)
-//        val searchView = searchItem.actionView as SearchView
-//
-//        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                if(query!=null){
-//                    binding.recyclerview.scrollToPosition(0)
-//                    viewModel.searchPhotos(query.lowercase(Locale.getDefault()))
-//
-//                    Toast.makeText(context,query,Toast.LENGTH_SHORT).show()
-//                    searchView.clearFocus()
-//
-//                }
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                return true
-//            }
-//
-//        })
-//    }
 }

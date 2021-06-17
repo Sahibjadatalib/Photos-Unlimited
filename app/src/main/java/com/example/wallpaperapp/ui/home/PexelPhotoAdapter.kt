@@ -12,7 +12,7 @@ import com.example.wallpaperapp.R
 import com.example.wallpaperapp.databinding.PhotosListItemBinding
 import com.example.wallpaperapp.models.Photos
 
-class PexelPhotoAdapter :
+class PexelPhotoAdapter(private val listener: OnClickListener) :
     PagingDataAdapter<Photos, PexelPhotoAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
@@ -30,23 +30,24 @@ class PexelPhotoAdapter :
     }
 
 
-    class PhotoViewHolder(private val binding: PhotosListItemBinding) :
+    inner class PhotoViewHolder(private val binding: PhotosListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(currentPhoto: Photos) {
-
-            binding.apply {
-                Glide.with(itemView)
-                    .load(currentPhoto.src.large2x)
-                    .centerCrop()
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .apply(
-                        RequestOptions().placeholder(R.drawable.loading_animation)
-                            .error(R.drawable.ic_baseline_broken_image_24)
-                    )
-                    .error(R.drawable.ic_baseline_broken_image_24)
-                    .into(imageView)
+        init {
+            binding.root.setOnClickListener{
+                val position = bindingAdapterPosition
+                if(position != RecyclerView.NO_POSITION){
+                    val item = getItem(position)
+                    if(item!=null){
+                        listener.onPhotoClick(item)
+                    }
+                }
             }
+        }
+
+        fun bind(currentPhoto: Photos) {
+            binding.photo = currentPhoto
+            binding.executePendingBindings()
         }
 
     }
@@ -60,6 +61,10 @@ class PexelPhotoAdapter :
                 oldItem == newItem
 
         }
+    }
+
+    interface OnClickListener{
+        fun onPhotoClick(photo:Photos)
     }
 
 

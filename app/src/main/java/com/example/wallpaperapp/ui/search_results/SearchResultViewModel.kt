@@ -1,10 +1,7 @@
 package com.example.wallpaperapp.ui.search_results
 
 import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.cachedIn
 import com.example.wallpaperapp.network.PexelRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,7 +10,9 @@ import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
-class SearchResultViewModel @Inject constructor(private val repository:PexelRepository): ViewModel() {
+class SearchResultViewModel @Inject constructor(private val repository:PexelRepository,private val savedStateHandle: SavedStateHandle): ViewModel() {
+
+    val query:String? = savedStateHandle["query"]
 
     private val currentQuery = MutableLiveData(DEFAULT_QUERY)
 
@@ -21,9 +20,11 @@ class SearchResultViewModel @Inject constructor(private val repository:PexelRepo
         repository.getSearchedPhotos(queryString).cachedIn(viewModelScope)
     }
 
-    fun searchPhotos(query: String) {
+    init {
         currentQuery.value = query
     }
+
+//
 
     companion object {
         private const val DEFAULT_QUERY = "ocean"
