@@ -92,7 +92,7 @@ class HomeFragment : Fragment(), PexelPhotoAdapter.OnClickListener {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
-                    binding.recyclerview.scrollToPosition(0)
+                    //binding.recyclerview.scrollToPosition(0)
                     findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchResultFragment(query))
                     Toast.makeText(context, query, Toast.LENGTH_SHORT).show()
                     searchView.clearFocus()
