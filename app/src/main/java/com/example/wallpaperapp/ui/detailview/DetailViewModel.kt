@@ -43,9 +43,12 @@ class DetailViewModel @Inject constructor(savedStateHandle: SavedStateHandle) : 
 
             try{
                 wallPaperManager.setBitmap(bitmap)
+
             }catch (e: Exception){
                 e.printStackTrace()
             }
+
         }
+
     }
 }

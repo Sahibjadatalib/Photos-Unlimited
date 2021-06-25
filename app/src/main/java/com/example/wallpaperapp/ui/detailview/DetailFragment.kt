@@ -31,8 +31,8 @@ class DetailFragment : Fragment() {
 
         viewModel.setWallpaperEvent.observe(viewLifecycleOwner, {
             if(it==true){
-                Toast.makeText(context,"Set as Wallpaper", Toast.LENGTH_SHORT).show()
                 viewModel.setWallPaper(binding.imageView)
+                Toast.makeText(context,"Set as Wallpaper",Toast.LENGTH_SHORT).show()
             }
         })
 
