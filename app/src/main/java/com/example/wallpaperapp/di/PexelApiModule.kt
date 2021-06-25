@@ -1,5 +1,7 @@
 package com.example.wallpaperapp.di
 
+import android.app.WallpaperManager
+import android.content.Context
 import android.os.Build
 import androidx.core.os.bundleOf
 import androidx.navigation.NavArgs
@@ -12,6 +14,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.internal.managers.ApplicationComponentManager
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

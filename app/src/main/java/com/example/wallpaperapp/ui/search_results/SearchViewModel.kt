@@ -10,21 +10,22 @@ import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
-class SearchResultViewModel @Inject constructor(private val repository:PexelRepository,private val savedStateHandle: SavedStateHandle): ViewModel() {
+class SearchViewModel @Inject constructor(private val repository:PexelRepository, private val savedStateHandle: SavedStateHandle): ViewModel() {
 
     val query:String? = savedStateHandle["query"]
 
     private val currentQuery = MutableLiveData(DEFAULT_QUERY)
 
+
     val searchedPhotos = currentQuery.switchMap { queryString ->
         repository.getSearchedPhotos(queryString).cachedIn(viewModelScope)
     }
 
+
+
     init {
         currentQuery.value = query
     }
-
-//
 
     companion object {
         private const val DEFAULT_QUERY = "ocean"

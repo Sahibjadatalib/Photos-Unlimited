@@ -16,15 +16,13 @@
             android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="#FFFFFF">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/myToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/primaryColor"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
+                android:background="@color/primaryColor">
 
             </androidx.appcompat.widget.Toolbar>
 

@@ -6,32 +6,34 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.wallpaperapp.ui.detailview.DetailViewViewModel" />
-
+            type="com.example.wallpaperapp.ui.detailview.DetailViewModel" />
 
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.detailview.DetailViewFragment">
+        tools:context=".ui.detailview.DetailFragment">
 
         <ImageView
+            android:id="@+id/image_view"
+            imageUrl="@{viewModel.selectedPhoto.src.large2x}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:src="@tools:sample/backgrounds/scenic"
+            android:scaleType="centerCrop"
             tools:scaleType="centerCrop"
-            imageUrl="@{viewModel.selectedPhoto.src.large2x}"/>
+            tools:src="@tools:sample/backgrounds/scenic" />
 
-        <TextView
-            android:id="@+id/text_view_photographer"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/set_wallpaper_btn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Name of the photograpger"
-            android:layout_gravity="bottom|right"
             android:layout_margin="8dp"
-            android:textSize="24dp"
-            android:text="@{String.valueOf(viewModel.selectedPhotoId)}"/>
+            android:text="Set as Wallpaper"
+            android:background="@drawable/custom_btn"
+            android:layout_gravity="bottom"
+            android:onClick="@{()->viewModel.setWallPaperBtnClicked()}"/>
+
 
 
     </FrameLayout>

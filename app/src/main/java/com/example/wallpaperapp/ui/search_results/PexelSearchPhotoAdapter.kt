@@ -12,7 +12,7 @@ import com.example.wallpaperapp.R
 import com.example.wallpaperapp.databinding.PhotosListItemBinding
 import com.example.wallpaperapp.models.Photos
 
-class PexelSearchPhotoAdapter :
+class PexelSearchPhotoAdapter(private val listener: PexelSearchPhotoAdapter.OnClickListener) :
     PagingDataAdapter<Photos, PexelSearchPhotoAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
@@ -30,8 +30,20 @@ class PexelSearchPhotoAdapter :
     }
 
 
-    class PhotoViewHolder(private val binding: PhotosListItemBinding) :
+    inner class PhotoViewHolder(private val binding: PhotosListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener{
+                val position = bindingAdapterPosition
+                if(position != RecyclerView.NO_POSITION){
+                    val item = getItem(position)
+                    if(item != null){
+                        listener.onPhotoClick(item)
+                    }
+                }
+            }
+        }
 
         fun bind(currentPhoto: Photos) {
             binding.photo = currentPhoto
@@ -49,6 +61,10 @@ class PexelSearchPhotoAdapter :
                 oldItem == newItem
 
         }
+    }
+
+    interface OnClickListener{
+        fun onPhotoClick(photo:Photos)
     }
 
 

@@ -19,7 +19,9 @@ class PexelRepository @Inject constructor(
 
     fun getSearchedPhotos(query: String) =
         Pager(
-            config = PagingConfig(pageSize = 15, maxSize = 80, enablePlaceholders = false),
+            config = PagingConfig(pageSize = 80, maxSize = 260, enablePlaceholders = false),
             pagingSourceFactory = { PexelPagingSourceForSearch(pexelApi, query) }
         ).liveData
+
+
 }

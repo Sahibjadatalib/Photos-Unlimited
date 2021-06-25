@@ -10,24 +10,35 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_searchResultFragment"
-            app:destination="@id/searchResultFragment" />
+            app:destination="@id/searchResultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_homeFragment_to_detailViewFragment"
-            app:destination="@id/detailViewFragment" />
+            app:destination="@id/detailViewFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/searchResultFragment"
-        android:name="com.example.wallpaperapp.ui.search_results.SearchResultFragment"
-        android:label="SearchResultFragment"
+        android:name="com.example.wallpaperapp.ui.search_results.SearchFragment"
+        android:label="{query}"
         tools:layout="@layout/search_result_fragment">
         <argument
             android:name="query"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_searchResultFragment_to_detailViewFragment"
+            app:destination="@id/detailViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailViewFragment"
-        android:name="com.example.wallpaperapp.ui.detailview.DetailViewFragment"
+        android:name="com.example.wallpaperapp.ui.detailview.DetailFragment"
         android:label="DetailViewFragment"
         tools:layout="@layout/detail_view_fragment">
         <argument
