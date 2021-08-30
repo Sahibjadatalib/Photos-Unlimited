@@ -7,7 +7,7 @@ Also you can search images of your choise and set them as your device wallpaper.
 here are some screenshots of my Photos Unlimited app.
 
 
-![screen_1-small](https://user-images.githubusercontent.com/67537548/123542682-99182880-d768-11eb-8ef3-60e6b0767ffd.png)
+                         ![screen_1-small](https://user-images.githubusercontent.com/67537548/123542682-99182880-d768-11eb-8ef3-60e6b0767ffd.png)
 
 ![screen_2-small](https://user-images.githubusercontent.com/67537548/123542707-bea53200-d768-11eb-9709-5cf8c853fb7c.png)
 
