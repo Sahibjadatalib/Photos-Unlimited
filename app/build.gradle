@@ -5,12 +5,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'dagger.hilt.android.plugin'
+//apply plugin: 'kotlin-parcelize'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     buildFeatures {
+        //viewBinding true
         dataBinding true
     }
 
