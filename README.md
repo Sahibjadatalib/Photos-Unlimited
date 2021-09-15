@@ -1,18 +1,20 @@
 
 # Photos Unlimited
 
-## Download
-
-<a href = "https://github.com/Sahibjadatalib/Photos-Unlimited/releases/latest">
-  <img border="0" alt="get it on github" src="https://user-images.githubusercontent.com/67537548/133410718-647a332b-8a8f-4ce1-939b-b49b2ea10652.png"/>
-</a>
-
 ## Features
 <ul>
 <li>Get millions of high-quality images</li>
 <li>Search images of your choice </li>
 <li>Set these images as your device wallpaper</li>
 </ul>
+
+## Download
+
+<a href = "https://github.com/Sahibjadatalib/Photos-Unlimited/releases/latest">
+  <img border="0" alt="get it on github" src="https://user-images.githubusercontent.com/67537548/133410718-647a332b-8a8f-4ce1-939b-b49b2ea10652.png"/>
+</a>
+
+
 
 ## Preview
 
@@ -28,6 +30,25 @@ https://user-images.githubusercontent.com/67537548/133383529-9e8779d3-381a-4ac4-
 ![screen_3-small](https://user-images.githubusercontent.com/67537548/123542714-c95fc700-d768-11eb-98cb-173ae552cbe4.png)
 ![screen_4-small](https://user-images.githubusercontent.com/67537548/123542715-c9f85d80-d768-11eb-80f2-d347c37894fd.png)
 ![screen_5-small](https://user-images.githubusercontent.com/67537548/123542718-cb298a80-d768-11eb-941a-7a71f8fcfc05.png)
+
+
+
+## Built with
+<p> Built with MVVM architecture while practicing clean code paradigm (Uncle Bob) </p>
+
+<ul>
+    <li><a href="https://kotlinlang.org/">Kotlin</a> </li>
+    <li><a href="https://square.github.io/retrofit/">Retrofit</a> </li>
+  <li><a href="https://github.com/bumptech/glide">Glide</a> </li>
+    <li><a href="https://kotlinlang.org/docs/coroutines-overview.html">Coroutines</a> </li>
+    <li><a href="https://dagger.dev/hilt/">Hilt-dependency injection</a> </li>
+    <li><a href="https://developer.android.com/training/dependency-injection/hilt-jetpack">ViewModels</a> </li>
+    <li><a href="https://developer.android.com/jetpack/compose/navigation">Navigation Component</a> </li>
+    <li>etc.</li>
+  
+
+  
+</ul>
 
 
 
