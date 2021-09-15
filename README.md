@@ -1,17 +1,17 @@
 
 # Photos Unlimited
 
-This is a fully featured android application where you can find millions of high-quality photos and set them as your mobile wallpaper.
-Also you can search images of your choise and set them as your device wallpaper.
+## Download
 
-here are some screenshots of my Photos Unlimited app.
+<a href = "https://github.com/Sahibjadatalib/PasswordManagerApp/releases/latest">
+  <img border="0" alt="get it on github" src="https://user-images.githubusercontent.com/67537548/133410718-647a332b-8a8f-4ce1-939b-b49b2ea10652.png"/>
+</a>
 
 ## Features
 <ul>
-<li>First item</li>
-<li>Second item</li>
-<li>Third item</li>
-<li>Fourth item</li>
+<li>Get millions of high-quality images</li>
+<li>Search images of your choice </li>
+<li>Set these images as your device wallpaper</li>
 </ul>
 
 ## Preview
